@@ -81,16 +81,16 @@ Shortcuts are deeply integrated into the OS. After creating one, you have numero
 You can trigger a Shortcut from Home Assistant using a notification like so:
 
 ```yaml
-- action: notify.mobile_app_<your_device_id_here>
-  data:
-    message: "Trigger a Shortcut!"
-    data:
-      shortcut:
-        name: "Shortcut Name"
-        # you can provide any number of keys and values
-        # all values must be strings (e.g. not numbers, arrays, dictionaries, etc.)
-        key_for_shortcut: "value provided to shortcut"
-        another_key: "another value"
+actions:
+  - action: SEND_SMS_WATER_LEAK
+    title: Notify Household
+    icon: sfsymbols:person.3
+    destructive: true
+    url: shortcuts://run-shortcut?name=Water Leak Household Text
+  - action: SILENCE_ALARM
+    title: Silence Alarm
+    activationmode: background
+    icon: sfsymbols:bell.slash
 ```
 
 When you tap on the notification to launch Home Assistant, it will redirect you to the Shortcuts app to perform the given Shortcut. You can customize this behavior with the following keys in `shortcut` above:
